@@ -23,13 +23,7 @@
         }
     }
 
-    // function calculateXpForLevel(level) {
-    //     if (level === 0) {
-    //         return 0;
-    //     }
-    //     return 10 + ((level - 1) * 20) + calculateXpForLevel(level - 1);
-    // }
-
+    // TODO: Make this function more efficient, to calculate the max possible level directly compared to calculating it in a loop.
     function calculateMaxPossibleLevel(xp) {
         var level = 1;
         var xpNeeded = 10;
@@ -49,22 +43,24 @@
 
         console.assert(xpCells.snapshotLength === levelCells.snapshotLength, "XP and Level snapshot lengths are unequal.");
 
+        // snapshotItem returns Node that is also instance of Element
         for (var i = 0; i < xpCells.snapshotLength; i++) {
-            var levelNode = levelCells.snapshotItem(i);
-            if (levelNode.textContent.lastIndexOf(')') != -1) {
+            var levelElem = levelCells.snapshotItem(i);
+            if (levelElem.textContent.lastIndexOf(')') != -1) {
                 continue;
             }
-            var xpNode = xpCells.snapshotItem(i);
-            var currXp = xpNode.textContent.substring(0, xpNode.textContent.indexOf('/'));
+            var xpElem = xpCells.snapshotItem(i);
+            var currXp = xpElem.textContent.substring(0, xpElem.textContent.indexOf('/'));
 
             var possibleLevel = calculateMaxPossibleLevel(Number(currXp));
-            var currLevel = Number(levelNode.textContent)
+            var currLevel = Number(levelElem.textContent)
             if (possibleLevel === currLevel) {
                 continue;
             }
 
-            // TODO: Edit the width of the cell to 42px so that the new level does not show on a newline.
-            levelNode.textContent = levelNode.textContent + ' (' + possibleLevel + ')';
+            levelElem.textContent = levelElem.textContent + ' (' + possibleLevel + ')';
+            // 42px means the new level will be on same line (assuming double digit levels)
+            levelElem.setAttribute('style', 'width:42px')
         }
     }
 
@@ -75,14 +71,17 @@
         var levelCells = document.evaluate(".//h3/a/table/tbody/tr/td[6]", commanderTable, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
         for (var i = 0; i < levelCells.snapshotLength; i++) {
-            var levelNode = levelCells.snapshotItem(i);
-            var parenPos = levelNode.textContent.indexOf('(');
+            var levelElem = levelCells.snapshotItem(i);
+            var parenPos = levelElem.textContent.indexOf('(');
             if (parenPos != -1) {
-                levelNode.textContent = levelNode.textContent.substring(0, parenPos - 1);
+                levelElem.textContent = levelElem.textContent.substring(0, parenPos - 1);
+                // 30px is original width
+                levelElem.setAttribute('style', 'width:30px')
             }
         }
     }
 
+    // Draws the toggle button for this commander level script. Taken from other Bazoon scripts
     function drawToggleButton() {
         const existingToggleButton = document.querySelector('div[cmd-level-toggle-button="true"]');
         if (!existingToggleButton) {
@@ -122,6 +121,8 @@
         }
     }
 
+    // TODO: This MutationObserver is called on any change in the page, may need to narrow down the observe target
+    // Otherwise there may be performance impact on the browser.
     const urlObserver = new MutationObserver((mutations, observer) => {
         if (window.location.href === 'https://elgea.illyriad.co.uk/#/Military/Commanders') {
             drawToggleButton();
