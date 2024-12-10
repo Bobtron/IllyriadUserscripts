@@ -52,14 +52,14 @@
             var currXp = xpElem.textContent.substring(0, xpElem.textContent.indexOf('/'));
 
             var possibleLevel = calculateMaxPossibleLevel(Number(currXp));
-            var currLevel = Number(levelElem.textContent)
+            var currLevel = Number(levelElem.textContent);
             if (possibleLevel === currLevel) {
                 continue;
             }
 
             levelElem.textContent = levelElem.textContent + ' (' + possibleLevel + ')';
             // 42px means the new level will be on same line (assuming double digit levels)
-            levelElem.setAttribute('style', 'width:42px')
+            levelElem.setAttribute('style', 'width:42px');
         }
     }
 
