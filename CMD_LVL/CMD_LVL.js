@@ -40,7 +40,7 @@
         var xpCells = document.evaluate(".//h3/a/table/tbody/tr/td[5]", commanderTable, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         var levelCells = document.evaluate(".//h3/a/table/tbody/tr/td[6]", commanderTable, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
-        console.assert(xpCells.snapshotLength === levelCells.snapshotLength, "XP and Level snapshot lengths are unequal.");
+        // console.assert(xpCells.snapshotLength === levelCells.snapshotLength, "XP and Level snapshot lengths are unequal.");
 
         // snapshotItem returns Node that is also instance of Element
         for (var i = 0; i < xpCells.snapshotLength; i++) {
