@@ -1,3 +1,7 @@
+## Summary
+This script calculates the potential level of commanders given their current xp.
+The existing UI only shows the current level, not the potential level.
+
 ## Calculations for commander levels
 
 XP for level n = ...

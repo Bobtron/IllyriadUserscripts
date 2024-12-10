@@ -40,6 +40,7 @@
         return level - 1;
     }
 
+    // Appends the potential levels (in parentheses) to the end of the cell with the current level
     function addPotentialLevels() {
         if (toggleState === 'off') return;
         const commanderTable = document.querySelector("#MainContentDiv > div.info > div.accordionCommand.ui-accordion.ui-widget.ui-helper-reset.ui-accordion-icons")
@@ -63,6 +64,7 @@
         }
     }
 
+    // On toggle off, this function removes the potential level (in parentheses)
     function removePotentialLevels() {
         if (toggleState === 'on') return;
         const commanderTable = document.querySelector("#MainContentDiv > div.info > div.accordionCommand.ui-accordion.ui-widget.ui-helper-reset.ui-accordion-icons")
