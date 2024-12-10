@@ -2,6 +2,11 @@
 This script calculates the potential level of commanders given their current xp.
 The existing UI only shows the current level, not the potential level.
 
+## Installation
+Install [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo), it is required for these userscripts.
+
+Install this script by [clicking me](https://github.com/Bobtron/IllyriadUserscripts/raw/refs/heads/master/CMD_LVL/CMD_LVL.user.js), tampermonkey should auto pop up the installation screen.
+
 ## Calculations for commander levels
 
 ```
