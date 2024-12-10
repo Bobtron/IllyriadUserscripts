@@ -5,7 +5,6 @@
 // @description  Displays the possible level of a commander next to the actual level.
 // @author       Bobtron
 // @match        https://elgea.illyriad.co.uk/*
-// @require      file:///Users/personanongrata/Documents/kosher/illyriad/IllyriadUserscripts/CMD_LVL.js
 // ==/UserScript==
 
 (function() {
@@ -58,6 +57,10 @@
             var currXp = xpNode.textContent.substring(0, xpNode.textContent.indexOf('/'));
 
             var possibleLevel = calculateMaxPossibleLevel(Number(currXp));
+            var currLevel = Number(levelNode.textContent)
+            if (possibleLevel === currLevel) {
+                continue;
+            }
 
             // TODO: Edit the width of the cell to 42px so that the new level does not show on a newline.
             levelNode.textContent = levelNode.textContent + ' (' + possibleLevel + ')';
