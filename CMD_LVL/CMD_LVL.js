@@ -5,7 +5,6 @@
 // @description  Displays the possible level of a commander next to the actual level.
 // @author       Bobtron
 // @match        https://elgea.illyriad.co.uk/*
-// @require      https://raw.githubusercontent.com/Bobtron/IllyriadUserscripts/refs/heads/master/CMD_LVL/CMD_LVL.js
 // ==/UserScript==
 
 (function() {
