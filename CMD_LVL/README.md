@@ -4,6 +4,7 @@ The existing UI only shows the current level, not the potential level.
 
 ## Calculations for commander levels
 
+```
 XP for level n = ...
 XP(n) = ...
 
@@ -32,3 +33,4 @@ XP(n) = ...
 
 XP(0) = 0
 XP(n) = 10 + XP(n - 1) + ((n - 1) * 20)
+```
