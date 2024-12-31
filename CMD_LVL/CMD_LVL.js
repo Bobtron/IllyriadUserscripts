@@ -23,12 +23,20 @@
     }
 
     // TODO: Make this function more efficient, to calculate the max possible level directly compared to calculating it in a loop.
+    /*
+    pepsi boy:  for level L<74: XP=10×(L^2 -L +1)
+                for level L>75: XP=57250+100×(L-76)×(L-59)
+    */
     function calculateMaxPossibleLevel(xp) {
         var level = 1;
         var xpNeeded = 10;
-        while (xpNeeded <= xp) {
+        while (xpNeeded <= xp && level < 74) {
             xpNeeded += 20 * level;
             level += 1;
+        }
+        while (xpNeeded <= xp) {
+            level += 1;
+            xpNeeded = 57250 + 100 * (level - 76) * (level - 59)
         }
         return level - 1;
     }
