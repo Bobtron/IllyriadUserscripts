@@ -131,7 +131,7 @@
     // TODO: This MutationObserver is called on any change in the page, may need to narrow down the observe target
     // Otherwise there may be performance impact on the browser.
     const urlObserver = new MutationObserver((mutations, observer) => {
-        if (window.location.href === 'https://elgea.illyriad.co.uk/#/Military/Commanders') {
+        if (window.location.href.startsWith('https://elgea.illyriad.co.uk/#/Military/Commanders')) {
             drawToggleButton();
             addPotentialLevels();
         } else {
